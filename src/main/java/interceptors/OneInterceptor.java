@@ -2,6 +2,7 @@ package interceptors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +21,15 @@ public class OneInterceptor implements HandlerInterceptor
 			HttpServletResponse response, Object handler) throws Exception
 	{
 		System.out.println("preHandle拦截请求");
+//		HttpSession session = request.getSession();
+//		Object user = session.getAttribute("admin");
+//		if (user != null)
+//		{
+//			return true;
+//		}
+//		System.out.println("重定向到");
+//		response.sendRedirect("");// 重定向到指定页面
+//		return false;
 		return true;
 	}
 

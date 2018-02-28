@@ -26,16 +26,19 @@
 		<property name="prefix" value="/WEB-INF/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
-	<!-- 拦截属于spring框架，如果有多个拦截器，按照先后顺序执行 -->
+
+	<!-- 拦截属于spring框架，如果有多个拦截器，按照先后顺序执行，/**拦截所有的请求 ,需要排除 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/*" />
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/toLogin.do" />
+			<mvc:exclude-mapping path="/startLogin.do" />
 			<bean class="interceptors.OneInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 
-
-
-
+	<!-- 系统全局简单异常捕获 <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> 
+		<property name="exceptionMappings"> <props> <prop key="java.lang.Exception">exception</prop> 
+		<prop key="java.lang.NumberFormatException">exception</prop> </props> </property> 
+		</bean> -->
 </beans>
